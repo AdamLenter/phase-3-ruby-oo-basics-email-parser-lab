@@ -1,4 +1,22 @@
+require 'pry'
 # Build a class EmailAddressParser that accepts a string of unformatted 
 # emails. The parse method on the class should separate them into
 # unique email addresses. The delimiters to support are commas (',')
 # or whitespace (' ').
+class EmailAddressParser
+    attr_accessor(:email_addresses)
+
+    def initialize(email_addresses)
+        @email_addresses = email_addresses
+    end
+
+    def parse
+        split_emails = @email_addresses.split(/\,|\s/)
+        filterd_emails = split_emails.select do |b|
+            b != ""
+        end
+
+        unique_emails = filterd_emails.uniq
+        unique_emails
+    end
+end
